@@ -57,10 +57,12 @@ endif()
 
 # Required to use /std:c++17 or higher on Windows
 # For other platforms, set C++11 as standard for the whole project
-if(NOT MSVC)
-  set(CMAKE_CXX_STANDARD 11)
-else()
-  string(APPEND CMAKE_CXX_FLAGS " /std:c++17")
+if(NOT QNX)
+  if(NOT MSVC)
+    set(CMAKE_CXX_STANDARD 11)
+  else()
+    string(APPEND CMAKE_CXX_FLAGS " /std:c++17")
+  endif()
 endif()
 
 include(GNUInstallDirs)
